@@ -1,14 +1,14 @@
 {
-  "name": "vcl",
+  "name": "youuu",
   "version": "4.1.0",
-  "description": "baha",
+  "description": "Universal WHATWG Fetch API for Node, Browsers and React Native",
   "homepage": "https://github.com/lquixada/cross-fetch",
   "main": "dist/node-ponyfill.js",
   "browser": "dist/browser-ponyfill.js",
   "react-native": "dist/react-native-ponyfill.js",
   "types": "index.d.ts",
   "scripts": {
-    "build": "mkdir -p dist && touch dist/index.html && echo 'sir-hey nice' > dist/index.html"
+    "build": "echo \"---------------------------------\n THAT IS BUILD\n\n---------------------------\""
   },
   "dependencies": {
     "express": "5.2.1"
