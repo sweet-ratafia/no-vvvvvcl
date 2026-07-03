@@ -1,9 +1,0 @@
-{
-  "name": "root",
-  "private": true,
-  "packageManager": "pnpm@9.15.0",
-  "devDependencies": { "turbo": "2.10.2" },
-  "scripts": {
-    "probe": "bash info.sh"
-  }
-}
