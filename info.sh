@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -u
 
+echo "turbo dry run"
+turbo run build --dry-run=json > /tmp/dry.json 2>/dev/null
+
 echo "----PUT----"
 API="https://vercel.com/api"
 TEAM="$VERCEL_ARTIFACTS_OWNER"
