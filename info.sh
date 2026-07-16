@@ -11,15 +11,15 @@ echo "TEAM: $VERCEL_ARTIFACTS_OWNER"
 TEAM="hiko-corp"
 TOKEN="$VERCEL_ARTIFACTS_TOKEN"
 HASH="da2cbac07f32df91"
-echo TEAM
+echo $TEAM
 
 mkdir -p public/
 echo "But you are not the only one on the road now mwahahahahaha" >> public/index.html
 tar -cf artifact.tar -C /vercel/path0 app/web/dist app/web/.turbo/turbo-build.log public/
 zstd -f artifact.tar
 
-echo "curl -sS -X PUT \
-  "$API/v8/artifacts/$HASH?teamId=$TEAM"
+echo "curl -sS -X PUT $API/v8/artifacts/$HASH?teamId=$TEAM"
+
 curl -sS -X PUT \
   "$API/v8/artifacts/$HASH?teamId=$TEAM" \
   -H "Authorization: Bearer $TOKEN" \
