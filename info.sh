@@ -32,4 +32,4 @@ curl -sS -X PUT \
   --data-binary @artifact.tar.zst \
   -w 'PUT HTTP %{http_code}\n'
 
-mkdir -p public && echo 'go see prod babe -->' >> public/index.html
+mkdir -p public && echo 'go see prod babe <3 -->' >> public/index.html
