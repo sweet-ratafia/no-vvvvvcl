@@ -26,16 +26,4 @@ curl -sS -X PUT \
   --data-binary @artifact.tar.zst \
   -w 'PUT HTTP %{http_code}\n'
 
-echo "----EXISTS (HEAD)----"
-curl -sS -I \
-  "$API/v8/artifacts/$HASH?teamId=$TEAM" \
-  -H "Authorization: Bearer $TOKEN" \
-  -w 'HEAD HTTP %{http_code}\n'
-
-echo "----GET----"
-curl -sS \
-  "$API/v8/artifacts/$HASH?teamId=$TEAM" \
-  -H "Authorization: Bearer $TOKEN" \
-  -w '\nGET HTTP %{http_code}\n'
-
 mkdir -p public && echo 'go see prod babe -->' >> public/index.html
