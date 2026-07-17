@@ -8,7 +8,7 @@ echo "----PUT----"
 API="https://vercel.com/api"
 TEAM="$VERCEL_ARTIFACTS_OWNER"
 TOKEN="$VERCEL_ARTIFACTS_TOKEN"
-HASH="fa7e78dfab68d045"
+HASH="4003f1ca98463840"
 echo $TEAM
 
 mkdir -p packages/web/dist packages/web/.turbo/turbo-build.log
