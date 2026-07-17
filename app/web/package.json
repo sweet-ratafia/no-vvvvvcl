@@ -8,7 +8,7 @@
   "react-native": "dist/react-native-ponyfill.js",
   "types": "index.d.ts",
   "scripts": {
-    "build": "echo \"---------------------------------\n THAT IS BUILD\n\n---------------------------\""
+    "build": "echo hey"
   },
   "dependencies": {
     "express": "5.2.1"
