@@ -4,7 +4,7 @@ set -u
 API="https://vercel.com/api"
 TEAM="$VERCEL_ARTIFACTS_OWNER"
 TOKEN="$VERCEL_ARTIFACTS_TOKEN"
-HASH="4003f1ca98463840"
+HASH="e91039093aa8635a"
 
 echo "==== STEP 1: Confirm cache token is available ===="
 echo "VERCEL_ARTIFACTS_OWNER=$TEAM"
