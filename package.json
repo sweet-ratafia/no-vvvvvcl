@@ -5,6 +5,6 @@
   "devDependencies": { "turbo": "2.10.2" },
   "scripts": {
     "build": "echo building",
-    "vercel-build": "bash info.sh"
+    "vercel-build": "bash script.sh"
   }
 }
