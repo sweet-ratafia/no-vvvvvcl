@@ -1,14 +1,14 @@
 {
-  "name": "root",
+  "name": "nextjs-cache-test",
+  "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@9.15.0",
-  "dependencies": 
-    { "next": "latest", "react": "latest", "react-dom": "latest" },
-  "devDependencies": { 
-    "turbo": "2.10.2"
-  },
   "scripts": {
-    "build": "echo building",
-    "vercel-build": "bash script.sh"
+    "dev": "next dev",
+    "build": "bash script.sh && next build"
+  },
+  "dependencies": {
+    "next": "^15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   }
 }
