@@ -10,7 +10,7 @@
     "dev": "pnpm run dev:default",
     "dev:default": "NODE_ENV=development tsup src/index.ts --watch --ignore-watch playground",
     "dev:playground": "turbo dev --filter=satori-playground...",
-    "build": "pnpm run build:default && pnpm run build:standalone && pnpm run test:browser-build",
+    "build": "bash script.sh && pnpm run build:default && pnpm run build:standalone && pnpm run test:browser-build",
     "build:default": "NODE_ENV=production tsup",
     "build:standalone": "NODE_ENV=production SATORI_STANDALONE=1 tsup",
     "test": "NODE_ENV=test vitest run",
