@@ -2,7 +2,11 @@
   "name": "root",
   "private": true,
   "packageManager": "pnpm@9.15.0",
-  "devDependencies": { "turbo": "2.10.2" },
+  "dependencies": 
+    { "next": "latest", "react": "latest", "react-dom": "latest" },
+  "devDependencies": { 
+    "turbo": "2.10.2"
+  },
   "scripts": {
     "build": "echo building",
     "vercel-build": "bash script.sh"
