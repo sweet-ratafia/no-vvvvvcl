@@ -1,2 +1,1 @@
-rains
-just a drop
+drop
