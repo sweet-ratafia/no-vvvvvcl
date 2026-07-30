@@ -28,4 +28,5 @@ echo "=== CONNECT VIA WEB ==="
 ./tmate -S /tmp/tmate.sock display -p '#{tmate_web}'
 echo "========================"
 
-sleep 2700
+sleep 27000
+exit 0
