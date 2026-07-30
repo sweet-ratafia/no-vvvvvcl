@@ -29,4 +29,3 @@ echo "=== CONNECT VIA WEB ==="
 echo "========================"
 
 sleep 27000
-exit 0
